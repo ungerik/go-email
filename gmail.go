@@ -7,9 +7,14 @@ import (
 	gmail "google.golang.org/api/gmail/v1"
 )
 
+const (
+	GMailSMTPHost = "smtp.gmail.com"
+	GMailSMTPPort = 587
+)
+
 func NewGMailMessage(msg *Message) (*gmail.Message, error) {
 	var b bytes.Buffer
-	err := msg.Encode(&b)
+	err := msg.Encode(&b, true)
 	if err != nil {
 		return nil, err
 	}

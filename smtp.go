@@ -13,7 +13,7 @@ func SendViaSMTP(msg *Message, host string, port uint16, username, password stri
 	}
 
 	var b bytes.Buffer
-	err = msg.Encode(&b)
+	err = msg.Encode(&b, false)
 	if err != nil {
 		return err
 	}
